@@ -23,6 +23,7 @@ class WordCounter(Bolt):
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
         
+        import psycopg2
         conn = psycopg2.connect(database="Tcount", user="postgres", password="pass", host="localhost", port="5432")
         cur = conn.cursor()
         if self.counts[word] == 1:
