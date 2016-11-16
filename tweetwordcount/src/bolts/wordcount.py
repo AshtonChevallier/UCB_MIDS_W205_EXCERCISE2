@@ -28,7 +28,7 @@ class WordCounter(Bolt):
         if self.counts[word] == 1
             cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES (" + word + "," + self.counts[word] + ")")
         else 
-            cur.execute("UPDATE Tweetwordcount SET count = " + self.counts[word] + " WHERE word = " + word ")" )
+            cur.execute("UPDATE Tweetwordcount SET count = " + self.counts[word] + " WHERE word = " + word + ")" )
         conn.commit()
         cur.close()
         conn.close()
