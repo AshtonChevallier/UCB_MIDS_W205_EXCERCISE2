@@ -19,7 +19,7 @@ class WordCounter(Bolt):
         # Database name: Tcount 
         # Table name: Tweetwordcount 
         # you need to create both the database and the table in advance.
-          # Increment the local count
+        # Increment the local count
         self.counts[word] += 1
         self.emit([word, self.counts[word]])
         
