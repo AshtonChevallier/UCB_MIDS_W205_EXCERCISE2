@@ -27,7 +27,7 @@ class WordCounter(Bolt):
         conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
         cur = conn.cursor()
         if self.counts[word] == 1:
-            cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES ('" + word + "'," + self.counts[word] + ")")
+            cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES ('%s', %s )" % (word,self.counts[word])
         else: 
             cur.execute("UPDATE Tweetwordcount SET count = " + self.counts[word] + " WHERE word = '" + word + "')" )
         conn.commit()
