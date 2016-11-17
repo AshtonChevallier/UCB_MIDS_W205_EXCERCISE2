@@ -25,7 +25,9 @@ class WordCounter(Bolt):
         import psycopg2
         conn = psycopg2.connect(database="tcount", user="postgres", password="pass", host="localhost", port="5432")
         cur = conn.cursor()
-        
+        cur.execute('''SELECT count(*) from tweetwordcount where word = '%s';''' % (word))
+#        x = cur.fetchall()
+ #       print '',x
         if self.counts[word] == 1:
             cur.execute('''INSERT INTO tweetwordcount (word,count) VALUES ('%s', %s );''' % (word,self.counts[word]))
         else: 
