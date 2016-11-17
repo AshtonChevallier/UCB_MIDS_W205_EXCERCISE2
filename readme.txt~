@@ -1,5 +1,0 @@
-Instuctions to view stream
-
-1. Ensure PostgreSQL is running on your instance
-2. Ensure TWEET
-1. Execute: python db_setup.p
