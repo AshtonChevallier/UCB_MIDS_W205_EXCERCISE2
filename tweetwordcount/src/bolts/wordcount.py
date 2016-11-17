@@ -1,5 +1,4 @@
 from __future__ import absolute_import, print_function, unicode_literals
-
 from collections import Counter
 from streamparse.bolt import Bolt
 
@@ -28,9 +27,9 @@ class WordCounter(Bolt):
         cur = conn.cursor()
         
         if self.counts[word] == 1:
-            cur.execute("INSERT INTO Tweetwordcount (word,count) VALUES ('%s', %s )" % (word,self.counts[word])
+            cur.execute('''INSERT INTO tweetwordcount (word,count) VALUES ('%s', %s );''' % (word,self.counts[word]))
         else: 
-            cur.execute("UPDATE Tweetwordcount SET count = %s  WHERE word == '%s')" ) % (self.counts[word],word)
+            cur.execute('''UPDATE tweetwordcount SET count = %s  WHERE word = '%s';''' % (self.counts[word],word))
                         
         conn.commit()
         cur.close()
